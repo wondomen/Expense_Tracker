@@ -33,14 +33,16 @@ class ExpenseViewModel: ObservableObject {
 
         // Recalculate totals when expenses change
         $expenses
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
                 self?.calculateTotals()
                 self?.saveExpenses()
             }
             .store(in: &cancellables)
 
-        // Recalculate remaining budget when budget limit changes
+                // Recalculate totals when budget changes
         $budget
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
                 self?.calculateTotals()
                 self?.saveBudget()
