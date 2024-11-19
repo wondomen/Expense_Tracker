@@ -1,16 +1,9 @@
-//
-//  ExpenseViewModel.swift
-//  Expense Reminder
-//
-//  Created by Amir Ghari on 11/19/24.
-//
-
 import Foundation
 import SwiftUI
 import Combine
 import UserNotifications
 
-class ExpenseViewModel: ObservableObject {
+class ExpenseViewModel: NSObject, ObservableObject, UNUserNotificationCenterDelegate {
     // MARK: - Published Properties
 
     @Published var expenses: [Expense] = []
@@ -25,7 +18,9 @@ class ExpenseViewModel: ObservableObject {
 
     // MARK: - Initialization
 
-    init() {
+    override init() {
+        super.init() // Call to NSObject's initializer
+        UNUserNotificationCenter.current().delegate = self
         requestNotificationPermissions()
         loadExpenses()
         loadBudget()
@@ -40,7 +35,7 @@ class ExpenseViewModel: ObservableObject {
             }
             .store(in: &cancellables)
 
-                // Recalculate totals when budget changes
+        // Recalculate totals when budget changes
         $budget
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
@@ -174,5 +169,14 @@ class ExpenseViewModel: ObservableObject {
            let decodedBudget = try? JSONDecoder().decode(Budget.self, from: data) {
             budget = decodedBudget
         }
+    }
+
+    // MARK: - UNUserNotificationCenterDelegate
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        // Show the notification even when the app is in the foreground
+        completionHandler([.banner, .sound])
     }
 }
