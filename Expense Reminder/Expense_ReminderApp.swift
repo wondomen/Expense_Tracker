@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct Expense_ReminderApp: App {
+    // Initialize the ViewModel
+    @StateObject private var viewModel = ExpenseViewModel()
+
     var body: some Scene {
         WindowGroup {
-            ExpenseListView()
+            HomePageView(viewModel: viewModel)
         }
     }
 }
+

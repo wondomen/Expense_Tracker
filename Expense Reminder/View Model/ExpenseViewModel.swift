@@ -1,32 +1,28 @@
 import Foundation
-import SwiftUI
 import Combine
 import UserNotifications
 
 class ExpenseViewModel: NSObject, ObservableObject, UNUserNotificationCenterDelegate {
+    
     // MARK: - Published Properties
-
     @Published var expenses: [Expense] = []
     @Published var budget: Budget = Budget(monthlyLimit: 1000.0) // Default budget
     @Published var totalSpent: Double = 0.0
     @Published var remainingBudget: Double = 0.0
-
-    // MARK: - Private Properties
-
+    
     private var cancellables = Set<AnyCancellable>()
     private var highestThresholdReached: Double = 0.0
-
+    
     // MARK: - Initialization
-
     override init() {
-        super.init() // Call to NSObject's initializer
+        super.init()
         UNUserNotificationCenter.current().delegate = self
         requestNotificationPermissions()
         loadExpenses()
         loadBudget()
         calculateTotals()
 
-        // Recalculate totals when expenses change
+        // Recalculate totals when expenses or budget change
         $expenses
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
@@ -35,7 +31,6 @@ class ExpenseViewModel: NSObject, ObservableObject, UNUserNotificationCenterDele
             }
             .store(in: &cancellables)
 
-        // Recalculate totals when budget changes
         $budget
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
@@ -46,7 +41,6 @@ class ExpenseViewModel: NSObject, ObservableObject, UNUserNotificationCenterDele
     }
 
     // MARK: - Expense Management
-
     func addExpense(_ expense: Expense) {
         expenses.append(expense)
     }
@@ -56,7 +50,6 @@ class ExpenseViewModel: NSObject, ObservableObject, UNUserNotificationCenterDele
     }
 
     // MARK: - Budget Calculations
-
     func calculateTotals() {
         let calendar = Calendar.current
         let currentMonth = calendar.component(.month, from: Date())
@@ -78,7 +71,6 @@ class ExpenseViewModel: NSObject, ObservableObject, UNUserNotificationCenterDele
     }
 
     // MARK: - Notification Permissions
-
     func requestNotificationPermissions() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
             if granted {
@@ -90,7 +82,6 @@ class ExpenseViewModel: NSObject, ObservableObject, UNUserNotificationCenterDele
     }
 
     // MARK: - Budget Alerts
-
     func checkBudgetThresholds() {
         let thresholds: [Double] = [1.0, 0.9, 0.75] // 100%, 90%, 75%
         for threshold in thresholds {
@@ -124,7 +115,6 @@ class ExpenseViewModel: NSObject, ObservableObject, UNUserNotificationCenterDele
     }
 
     // MARK: - Data Persistence
-
     private func getDocumentsDirectory() -> URL {
         FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     }
@@ -172,7 +162,6 @@ class ExpenseViewModel: NSObject, ObservableObject, UNUserNotificationCenterDele
     }
 
     // MARK: - UNUserNotificationCenterDelegate
-
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
