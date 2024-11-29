@@ -5,9 +5,8 @@
 //  Created by Amir Ghari on 11/19/24.
 //
 
-
 import Foundation
-import SwiftUICore
+import SwiftUI
 
 enum ExpenseCategory: String, CaseIterable, Codable, Identifiable {
     case food = "Food"

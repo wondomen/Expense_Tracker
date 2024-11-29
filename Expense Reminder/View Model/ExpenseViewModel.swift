@@ -43,10 +43,12 @@ class ExpenseViewModel: NSObject, ObservableObject, UNUserNotificationCenterDele
     // MARK: - Expense Management
     func addExpense(_ expense: Expense) {
         expenses.append(expense)
+        calculateTotals() // Recalculate totals when a new expense is added
     }
 
     func deleteExpense(at offsets: IndexSet) {
         expenses.remove(atOffsets: offsets)
+        calculateTotals() // Recalculate totals when an expense is deleted
     }
 
     // MARK: - Budget Calculations
@@ -65,6 +67,11 @@ class ExpenseViewModel: NSObject, ObservableObject, UNUserNotificationCenterDele
         // Calculate total spent
         totalSpent = monthlyExpenses.reduce(0) { $0 + $1.amount }
         remainingBudget = budget.monthlyLimit - totalSpent
+
+        // Check if budget has been exceeded and send notification
+        if totalSpent >= budget.monthlyLimit {
+            triggerBudgetExceededNotification()
+        }
 
         // Check budget thresholds for alerts
         checkBudgetThresholds()
@@ -110,6 +117,28 @@ class ExpenseViewModel: NSObject, ObservableObject, UNUserNotificationCenterDele
                 print("Error scheduling notification: \(error.localizedDescription)")
             } else {
                 print("Budget alert notification scheduled.")
+            }
+        }
+    }
+
+    // Schedule a notification when the budget is exceeded
+    func triggerBudgetExceededNotification() {
+        let content = UNMutableNotificationContent()
+        content.title = "Budget Exceeded!"
+        content.body = "You have exceeded your budget limit. Please review your expenses."
+        content.sound = .default
+        
+        let request = UNNotificationRequest(
+            identifier: UUID().uuidString,
+            content: content,
+            trigger: nil // Immediate delivery
+        )
+        
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                print("Error scheduling notification: \(error.localizedDescription)")
+            } else {
+                print("Budget exceeded notification scheduled.")
             }
         }
     }

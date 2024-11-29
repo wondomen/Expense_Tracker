@@ -5,6 +5,13 @@
 //  Created by Berhanu Muche on 25.11.2024.
 //
 
+//
+//  HomePageView.swift
+//  Expense Reminder
+//
+//  Created by Berhanu Muche on 25.11.2024.
+//
+
 import SwiftUI
 
 struct HomePageView: View {
@@ -42,9 +49,13 @@ struct HomePageView: View {
                         HomePageButton(title: "Set Budget", imageName: "creditcard")
                     }
 
-                    // Pass the viewModel to SettingsView
                     NavigationLink(destination: SettingsView(viewModel: viewModel)) {
                         HomePageButton(title: "Settings", imageName: "gearshape.fill")
+                    }
+                    
+                    // "Add Expense" button added here
+                    NavigationLink(destination: AddExpenseView(viewModel: viewModel)) {
+                        HomePageButton(title: "Add Expense", imageName: "plus.circle.fill")
                     }
                 }
                 
