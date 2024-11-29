@@ -1,9 +1,3 @@
-//
-//  AddExpenseView.swift
-//  Expense Reminder
-//
-//  Created by Amir Ghari on 11/19/24.
-//
 
 //
 //  AddExpenseView.swift

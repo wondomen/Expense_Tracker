@@ -1,10 +1,3 @@
-//
-//  BudgetSettingsView.swift
-//  Expense Reminder
-//
-//  Created by Amir Ghari on 11/19/24.
-//
-
 
 import SwiftUI
 
