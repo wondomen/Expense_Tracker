@@ -12,12 +12,12 @@ struct BudgetView: View {
     
     var body: some View {
         VStack {
-            Text("Set Budget")
+            Text(NSLocalizedString("set_budget_title", comment: "Set Budget title"))
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .padding(.top, 50)
             
-            TextField("Enter Monthly Budget", value: $viewModel.budget.monthlyLimit, formatter: NumberFormatter())
+            TextField(NSLocalizedString("enter_monthly_budget_placeholder", comment: "Enter Monthly Budget placeholder"), value: $viewModel.budget.monthlyLimit, formatter: NumberFormatter())
                 .keyboardType(.decimalPad)
                 .padding()
                 .background(Color.gray.opacity(0.2))

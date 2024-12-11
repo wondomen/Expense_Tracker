@@ -5,13 +5,6 @@
 //  Created by Berhanu Muche on 25.11.2024.
 //
 
-//
-//  HomePageView.swift
-//  Expense Reminder
-//
-//  Created by Berhanu Muche on 25.11.2024.
-//
-
 import SwiftUI
 
 struct HomePageView: View {
@@ -21,18 +14,18 @@ struct HomePageView: View {
         NavigationView {
             VStack {
                 // Page title
-                Text("Welcome to Expense Tracker")
+                Text(NSLocalizedString("welcome_title", comment: "Title for the home page"))
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .padding(.top, 50)
                 
                 // Expense Overview
                 VStack(alignment: .leading, spacing: 15) {
-                    Text("Total Spent: $\(viewModel.totalSpent, specifier: "%.2f")")
+                    Text(String(format: NSLocalizedString("total_spent", comment: "Total spent label"), viewModel.totalSpent))
                         .font(.title3)
-                    Text("Remaining Budget: $\(viewModel.remainingBudget, specifier: "%.2f")")
+                    Text(String(format: NSLocalizedString("remaining_budget", comment: "Remaining budget label"), viewModel.remainingBudget))
                         .font(.title3)
-                    Text("Budget Limit: $\(viewModel.budget.monthlyLimit, specifier: "%.2f")")
+                    Text(String(format: NSLocalizedString("budget_limit", comment: "Budget limit label"), viewModel.budget.monthlyLimit))
                         .font(.subheadline)
                         .foregroundColor(.gray)
                         .padding(.bottom, 30)
@@ -42,20 +35,20 @@ struct HomePageView: View {
                 // Navigation buttons
                 VStack(spacing: 20) {
                     NavigationLink(destination: ExpenseListView(viewModel: viewModel)) {
-                        HomePageButton(title: "View Expenses", imageName: "list.dash")
+                        HomePageButton(title: NSLocalizedString("view_expenses", comment: "Button to view expenses"), imageName: "list.dash")
                     }
                     
                     NavigationLink(destination: BudgetView(viewModel: viewModel)) {
-                        HomePageButton(title: "Set Budget", imageName: "creditcard")
+                        HomePageButton(title: NSLocalizedString("set_budget", comment: "Button to set budget"), imageName: "creditcard")
                     }
 
                     NavigationLink(destination: SettingsView(viewModel: viewModel)) {
-                        HomePageButton(title: "Settings", imageName: "gearshape.fill")
+                        HomePageButton(title: NSLocalizedString("settings", comment: "Button to navigate to settings"), imageName: "gearshape.fill")
                     }
                     
                     // "Add Expense" button added here
                     NavigationLink(destination: AddExpenseView(viewModel: viewModel)) {
-                        HomePageButton(title: "Add Expense", imageName: "plus.circle.fill")
+                        HomePageButton(title: NSLocalizedString("add_expense", comment: "Button to add an expense"), imageName: "plus.circle.fill")
                     }
                 }
                 

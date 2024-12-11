@@ -1,0 +1,52 @@
+/* 
+  Localizable.strings
+  Expense Reminder
+
+  Created by Berhanu Muche on 4.12.2024.
+  
+ */
+ 
+"total_spent" = "Total Spent: $%.2f";
+"remaining_budget" = "Remaining Budget: $%.2f";
+
+"budget_exceeded_title" = "Budget Exceeded!";
+"budget_exceeded_message" = "You have exceeded your budget limit. Please review your expenses.";
+"budget_alert_title" = "Budget Alert";
+"budget_alert_message" = "You've reached %d%% of your monthly budget.";
+"add_expense_title" = "Add New Expense";
+"select_category_title" = "Select Category";
+"enter_amount_placeholder" = "Enter Amount";
+"add_note_placeholder" = "Add a Note (Optional)";
+"save_expense_button" = "Save Expense";
+"selected_category_title" = "Selected Category: ";
+
+"budget_settings_title" = "Budget Settings";
+"monthly_budget_limit" = "Monthly Budget Limit";
+"enter_budget_limit_placeholder" = "Enter budget limit";
+"cancel_button" = "Cancel";
+"save_button" = "Save";
+"set_budget_title" = "Set Budget";
+"enter_monthly_budget_placeholder" = "Enter Monthly Budget";
+"select_category" = "Select Category";
+"Food" = "Food";
+"food" = "Food";
+"transport" = "Transport";
+"entertainment" = "Entertainment";
+"your_expenses" = "Your Expenses";
+"no_expenses" = "No expenses added yet.";
+"expense_amount" = "$%.2f";  // Format for displaying the amount
+"welcome_title" = "Welcome to Expense Tracker";
+"total_spent" = "Total Spent: $%.2f";
+"remaining_budget" = "Remaining Budget: $%.2f";
+"budget_limit" = "Budget Limit: $%.2f";
+"view_expenses" = "View Expenses";
+"set_budget" = "Set Budget";
+"settings" = "Settings";
+"add_expense" = "Add Expense";
+"settings_title" = "Settings";
+"enable_notifications" = "Enable Notifications";
+"dark_mode" = "Dark Mode";
+"reset_expenses" = "Reset Expenses";
+"reset_expenses_confirmation" = "Are you sure you want to reset all your expenses?";
+"reset" = "Reset";
+"cancel" = "Cancel";

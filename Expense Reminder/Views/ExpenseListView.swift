@@ -1,3 +1,9 @@
+//
+//  ExpenseListView.swift
+//  Expense Reminder
+//
+//  Created by Berhanu Muche on 25.11.2024.
+//
 
 import SwiftUI
 
@@ -6,14 +12,14 @@ struct ExpenseListView: View {
     
     var body: some View {
         VStack {
-            Text("Your Expenses")
+            Text(NSLocalizedString("your_expenses", comment: "Title for the expense list"))
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .padding(.top, 50)
             
             // Display Expenses List
             if viewModel.expenses.isEmpty {
-                Text("No expenses added yet.")
+                Text(NSLocalizedString("no_expenses", comment: "Message when no expenses are added"))
                     .font(.title2)
                     .foregroundColor(.gray)
                     .padding()
@@ -27,9 +33,9 @@ struct ExpenseListView: View {
                         
                         // Expense Details
                         VStack(alignment: .leading) {
-                            Text(expense.category.rawValue)
+                            Text(NSLocalizedString(expense.category.rawValue, comment: "Category name"))
                                 .font(.headline)
-                            Text("$\(expense.amount, specifier: "%.2f")")
+                            Text(String(format: NSLocalizedString("expense_amount", comment: "Amount of the expense"), expense.amount))
                                 .font(.subheadline)
                                 .foregroundColor(.gray)
                             if let note = expense.note {
@@ -47,6 +53,6 @@ struct ExpenseListView: View {
             Spacer()
         }
         .padding()
-        .navigationBarTitle("Expenses", displayMode: .inline)
+        .navigationBarTitle(NSLocalizedString("expenses", comment: "Navigation bar title"), displayMode: .inline)
     }
 }

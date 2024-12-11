@@ -1,3 +1,9 @@
+//
+//  ExpenseViewModel.swift
+//  Expense Reminder
+//
+//  Created by Amir Ghari on 11/19/24.
+//
 import Foundation
 import Combine
 import UserNotifications
@@ -102,8 +108,8 @@ class ExpenseViewModel: NSObject, ObservableObject, UNUserNotificationCenterDele
 
     func scheduleBudgetAlert(percent: Int) {
         let content = UNMutableNotificationContent()
-        content.title = "Budget Alert"
-        content.body = "You've reached \(percent)% of your monthly budget."
+        content.title = NSLocalizedString("budget_alert_title", comment: "Budget Alert title")
+        content.body = String(format: NSLocalizedString("budget_alert_message", comment: "Budget Alert message"), percent)
         content.sound = .default
 
         let request = UNNotificationRequest(
@@ -124,8 +130,8 @@ class ExpenseViewModel: NSObject, ObservableObject, UNUserNotificationCenterDele
     // Schedule a notification when the budget is exceeded
     func triggerBudgetExceededNotification() {
         let content = UNMutableNotificationContent()
-        content.title = "Budget Exceeded!"
-        content.body = "You have exceeded your budget limit. Please review your expenses."
+        content.title = NSLocalizedString("budget_exceeded_title", comment: "Budget Exceeded title")
+        content.body = NSLocalizedString("budget_exceeded_message", comment: "Budget Exceeded message")
         content.sound = .default
         
         let request = UNNotificationRequest(
@@ -198,3 +204,4 @@ class ExpenseViewModel: NSObject, ObservableObject, UNUserNotificationCenterDele
         completionHandler([.banner, .sound])
     }
 }
+

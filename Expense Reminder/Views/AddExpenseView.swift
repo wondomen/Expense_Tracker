@@ -1,4 +1,3 @@
-
 //
 //  AddExpenseView.swift
 //  Expense Reminder
@@ -20,36 +19,36 @@ struct AddExpenseView: View {
     var body: some View {
         VStack {
             // Page title
-            Text("Add New Expense")
+            Text(NSLocalizedString("add_expense_title", comment: "Add New Expense title"))
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .padding(.top, 50)
             
             // Category Picker
-            Picker("Select Category", selection: $selectedCategory) {
+            Picker(NSLocalizedString("select_category_title", comment: "Select Category label"), selection: $selectedCategory) {
                 ForEach(ExpenseCategory.allCases, id: \.self) { category in
                     Text(category.rawValue)
                         .tag(category)
                 }
             }
-            .pickerStyle(MenuPickerStyle())  // You can change this style if you prefer
+            .pickerStyle(MenuPickerStyle())
             .padding()
             
             // Display the selected category
-            Text("Selected Category: \(selectedCategory.rawValue)")
+            Text("\(NSLocalizedString("selected_category_title", comment: "Selected Category label")) \(selectedCategory.rawValue)")
                 .font(.title2)
                 .foregroundColor(.gray)
                 .padding(.bottom, 20)
             
             // Amount Field
-            TextField("Enter Amount", text: $amount)
+            TextField(NSLocalizedString("enter_amount_placeholder", comment: "Enter Amount placeholder"), text: $amount)
                 .keyboardType(.decimalPad)
                 .padding()
                 .background(RoundedRectangle(cornerRadius: 10).stroke(Color.gray, lineWidth: 1))
                 .padding(.bottom, 20)
             
             // Note Field (Optional)
-            TextField("Add a Note (Optional)", text: $note)
+            TextField(NSLocalizedString("add_note_placeholder", comment: "Add a Note placeholder"), text: $note)
                 .padding()
                 .background(RoundedRectangle(cornerRadius: 10).stroke(Color.gray, lineWidth: 1))
                 .padding(.bottom, 20)
@@ -58,7 +57,7 @@ struct AddExpenseView: View {
             Button(action: {
                 addExpense()
             }) {
-                Text("Save Expense")
+                Text(NSLocalizedString("save_expense_button", comment: "Save Expense button"))
                     .font(.title2)
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)
@@ -71,19 +70,14 @@ struct AddExpenseView: View {
             Spacer()
         }
         .padding()
-        .navigationBarTitle("Add Expense", displayMode: .inline)
+        .navigationBarTitle(NSLocalizedString("add_expense_title", comment: "Add Expense title"), displayMode: .inline)
     }
     
     private func addExpense() {
-        // Make sure the amount is a valid number
         guard let amountDouble = Double(amount), amountDouble > 0 else {
-            // Handle invalid input
             return
         }
-        
-        // Create a new expense
         let expense = Expense(id: UUID(), date: Date(), amount: amountDouble, category: selectedCategory, note: note.isEmpty ? nil : note)
-        
         // Add the expense to the view model
         viewModel.addExpense(expense)
         
@@ -92,4 +86,3 @@ struct AddExpenseView: View {
         note = ""
     }
 }
-

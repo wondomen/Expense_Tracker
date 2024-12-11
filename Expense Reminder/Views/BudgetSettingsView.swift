@@ -1,4 +1,9 @@
-
+//
+//  BudgetSettingsView.swift
+//  Expense Reminder
+//
+//  Created by Berhanu Muche on 25.11.2024.
+//
 import SwiftUI
 
 struct BudgetSettingsView: View {
@@ -10,17 +15,17 @@ struct BudgetSettingsView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("Monthly Budget Limit")) {
-                    TextField("Enter budget limit", text: $monthlyLimit)
+                Section(header: Text(NSLocalizedString("monthly_budget_limit", comment: "Monthly Budget Limit header"))) {
+                    TextField(NSLocalizedString("enter_budget_limit_placeholder", comment: "Enter Budget Limit placeholder"), text: $monthlyLimit)
                         .keyboardType(.decimalPad)
                 }
             }
-            .navigationTitle("Budget Settings")
+            .navigationTitle(NSLocalizedString("budget_settings_title", comment: "Budget Settings title"))
             .navigationBarItems(
-                leading: Button("Cancel") {
+                leading: Button(NSLocalizedString("cancel_button", comment: "Cancel button")) {
                     presentationMode.wrappedValue.dismiss()
                 },
-                trailing: Button("Save") {
+                trailing: Button(NSLocalizedString("save_button", comment: "Save button")) {
                     saveBudget()
                     presentationMode.wrappedValue.dismiss()
                 }

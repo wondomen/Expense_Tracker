@@ -187,10 +187,11 @@
 				};
 			};
 			buildConfigurationList = C70F59722CECB35B00B3AD04 /* Build configuration list for PBXProject "Expense Reminder" */;
-			developmentRegion = en;
+			developmentRegion = fi;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				fi,
 				Base,
 			);
 			mainGroup = C70F596E2CECB35B00B3AD04;

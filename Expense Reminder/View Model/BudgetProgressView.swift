@@ -17,11 +17,15 @@ struct BudgetProgressView: View {
     
     var body: some View {
         VStack {
-            Text("Total Spent: $\(totalSpent, specifier: "%.2f")")
+            // Using NSLocalizedString to fetch localized string for "Total Spent"
+            Text(String(format: NSLocalizedString("total_spent", comment: "Total Spent label"), totalSpent))
+            
             ProgressView(value: progress, total: 1)
                 .progressViewStyle(LinearProgressViewStyle(tint: .blue))
                 .frame(height: 10)
-            Text("Remaining Budget: $\(monthlyLimit - totalSpent, specifier: "%.2f")")
+            
+            // Using NSLocalizedString to fetch localized string for "Remaining Budget"
+            Text(String(format: NSLocalizedString("remaining_budget", comment: "Remaining Budget label"), monthlyLimit - totalSpent))
         }
         .padding()
     }

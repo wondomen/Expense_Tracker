@@ -1,0 +1,51 @@
+/* 
+  Localizable.strings
+  Expense Reminder
+
+  Created by Berhanu Muche on 4.12.2024.
+  
+*/
+ 
+"total_spent" = "Käytetty yhteensä: $%.2f";
+"remaining_budget" = "Jäljellä oleva budjetti: $%.2f";
+
+"budget_exceeded_title" = "Budjetti ylitetty!";
+"budget_exceeded_message" = "Olet ylittänyt budjettirajasi. Tarkista kulutuksesi.";
+"budget_alert_title" = "Budjettihälytys";
+"budget_alert_message" = "Olet saavuttanut %d%% kuukausibudjetistasi.";
+"add_expense_title" = "Lisää uusi kulu";
+"select_category_title" = "Valitse kategoria";
+"enter_amount_placeholder" = "Syötä määrä";
+"add_note_placeholder" = "Lisää huomautus (valinnainen)";
+"save_expense_button" = "Tallenna kulu";
+"selected_category_title" = "Valittu kategoria: ";
+"budget_settings_title" = "Budjetin asetukset";
+"monthly_budget_limit" = "Kuukausittainen budjetin raja";
+"enter_budget_limit_placeholder" = "Syötä budjetin raja";
+"cancel_button" = "Peruuta";
+"save_button" = "Tallenna";
+"set_budget_title" = "Aseta Budjetti";
+"enter_monthly_budget_placeholder" = "Syötä kuukausittainen budjetti";
+"select_category" = "Valitse kategoria";
+"Food" = "Ruoka";
+"food" = "Ruoka";
+"transport" = "Liikenne";
+"entertainment" = "Viihde";
+"your_expenses" = "Sinun kulut";
+"no_expenses" = "Ei lisättyjä kuluja vielä.";
+"expense_amount" = "€%.2f";
+"welcome_title" = "Tervetuloa Kulujen Seurantaan";
+"total_spent" = "Kulutettu yhteensä: €%.2f";
+"remaining_budget" = "Jäljellä oleva budjetti: €%.2f";
+"budget_limit" = "Budjetin raja: €%.2f";
+"view_expenses" = "Näytä kulut";
+"set_budget" = "Aseta budjetti";
+"settings" = "Asetukset";
+"add_expense" = "Lisää kulu";
+"settings_title" = "Asetukset";
+"enable_notifications" = "Ota ilmoitukset käyttöön";
+"dark_mode" = "Tumma tila";
+"reset_expenses" = "Nollaa kulut";
+"reset_expenses_confirmation" = "Oletko varma, että haluat nollata kaikki kulusi?";
+"reset" = "Nollaa";
+"cancel" = "Peruuta";

@@ -23,7 +23,7 @@ struct CategoryGridView: View {
                     VStack {
                         Image(systemName: category.iconName)
                             .font(.largeTitle)
-                        Text(category.rawValue)
+                        Text(NSLocalizedString(category.rawValue, comment: "Category name"))
                             .font(.caption)
                             .multilineTextAlignment(.center)
                     }
